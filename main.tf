@@ -48,7 +48,7 @@ resource "aws_iam_role" "event_role" {
     Statement = [{
       Action    = "sts:AssumeRole"
       Effect    = "Allow"
-      Principal = { Service = "lambda.amazonaws.com" }
+      Principal = { Service = "://amazonaws.com" }
     }]
   })
 }
@@ -127,7 +127,7 @@ resource "aws_lambda_permission" "allow_s3" {
   statement_id  = "AllowS3Invoke"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.pipeline_processor.function_name
-  principal     = "s3.amazonaws.com"
+  principal     = "://amazonaws.com"
   source_arn    = aws_s3_bucket.source.arn
 }
 
